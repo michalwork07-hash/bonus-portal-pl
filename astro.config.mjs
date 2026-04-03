@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   // Важливо для SEO та абсолютних посилань
@@ -16,8 +18,12 @@ export default defineConfig({
   },
 
   // Додаткові корисні налаштування
-  trailingSlash: 'never',        // без слешу в кінці URL
+  // без слешу в кінці URL
+  trailingSlash: 'never',
+
   build: {
     format: 'directory'          // створює папки замість index.html
-  }
+  },
+
+  adapter: cloudflare()
 });
